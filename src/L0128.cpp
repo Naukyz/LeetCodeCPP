@@ -31,6 +31,7 @@ public:
         int j = 0;
         int *next = getNext(needle);
         while (i < haystack.length() && fmin(j, needle.length())) {
+//        while (i < haystack.length() && j < needle.length()) {
             if (j == -1 || haystack[i] == needle[j]) {
                 i++;
                 j++;
