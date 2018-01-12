@@ -15,23 +15,17 @@ using namespace std;
 
 class Solution {
 public:
-    bool fmin(int a, int b) {
-        bool c = a < b;
-        return c;
-    }
-
     int strStr(string haystack, string needle) {
-        if (haystack == needle || needle.length() == 0) {
+        if (haystack == needle || (int) needle.length() == 0) {
             return 0;
         }
-        if (haystack.length() == 0 || haystack.length() < needle.length()) {
+        if ((int) haystack.length() == 0 || (int) haystack.length() < (int) needle.length()) {
             return -1;
         }
         int i = 0;
         int j = 0;
         int *next = getNext(needle);
-        while (i < haystack.length() && fmin(j, needle.length())) {
-//        while (i < haystack.length() && j < needle.length()) {
+        while (i < (int) haystack.length() && j < (int) needle.length()) {
             if (j == -1 || haystack[i] == needle[j]) {
                 i++;
                 j++;
@@ -39,8 +33,8 @@ public:
                 j = next[j];
             }
         }
-        if (j == needle.length()) {
-            return i - needle.length();
+        if (j == (int) needle.length()) {
+            return i - (int) needle.length();
         } else {
             return -1;
         }
@@ -49,7 +43,7 @@ public:
     int *getNext(string s) {
         int j = 0;
         int k = -1;
-        int *next = new int[s.length()];
+        int *next = new int[(int) s.length()];
         next[0] = -1;
         while (j < s.length() - 1) {
             if (k == -1 || s[j] == s[k]) {
