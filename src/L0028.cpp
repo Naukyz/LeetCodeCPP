@@ -16,16 +16,16 @@ using namespace std;
 class Solution {
 public:
     int strStr(string haystack, string needle) {
-        if (haystack == needle || (int) needle.length() == 0) {
+        if (haystack == needle || needle.length() == 0) {
             return 0;
         }
-        if ((int) haystack.length() == 0 || (int) haystack.length() < (int) needle.length()) {
+        if (haystack.length() == 0 || haystack.length() < needle.length()) {
             return -1;
         }
         int i = 0;
         int j = 0;
         int *next = getNext(needle);
-        while (i < (int) haystack.length() && j < (int) needle.length()) {
+        while (i < haystack.length() && j < (int) needle.length()) {
             if (j == -1 || haystack[i] == needle[j]) {
                 i++;
                 j++;
@@ -33,8 +33,8 @@ public:
                 j = next[j];
             }
         }
-        if (j == (int) needle.length()) {
-            return i - (int) needle.length();
+        if (j == needle.length()) {
+            return i - needle.length();
         } else {
             return -1;
         }
@@ -43,7 +43,7 @@ public:
     int *getNext(string s) {
         int j = 0;
         int k = -1;
-        int *next = new int[(int) s.length()];
+        int *next = new int[s.length()];
         next[0] = -1;
         while (j < s.length() - 1) {
             if (k == -1 || s[j] == s[k]) {
